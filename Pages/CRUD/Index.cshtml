@@ -1,0 +1,71 @@
+﻿@page
+@model Consoli_Ricette.Pages.CRUD.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Indice</h1>
+
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {<a asp-page="Create">Crea nuovo post</a>}
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome Autore
+            </th>
+            <th>
+                Difficoltà
+            </th>
+            <th>
+                Tempo necessario
+            </th>
+            <th>
+                Ingredienti
+            </th>
+            <th>
+                Descrizione
+            </th>
+            <th>
+                Procedimento
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Recipe) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.authorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.difficulty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ingredients)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.procedures)
+            </td>
+            <td>
+                @if (item.authorId == Model.userid)
+                    {<a asp-page="./Edit" asp-route-id="@item.id">Modifica</a>}
+
+                <a asp-page="./Details" asp-route-id="@item.id">Visualizza</a> 
+
+                @if (item.authorId == Model.userid)
+                    {<a asp-page="./Delete" asp-route-id="@item.id">Elimina</a>}
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

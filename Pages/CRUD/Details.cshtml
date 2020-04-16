@@ -1,0 +1,60 @@
+﻿@page
+@model Consoli_Ricette.Pages.CRUD.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Dettagli della Ricetta</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <h4>Identificativo Autore</h4>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recipe.authorId)
+        </dd>
+        <dt class="col-sm-2">
+            <h4>Nome Autore</h4>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recipe.authorName)
+        </dd>
+        <dt class="col-sm-2">
+            <h4>Difficoltà</h4>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recipe.difficulty)
+        </dd>
+        <dt class="col-sm-2">
+            <h4>Tempo necessario</h4>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recipe.time)
+        </dd>
+        <dt class="col-sm-2">
+            <h4>Ingredienti</h4>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recipe.ingredients)
+        </dd>
+        <dt class="col-sm-2">
+            <h4>Descrizione</h4>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recipe.description)
+        </dd>
+        <dt class="col-sm-2">
+            <h4>Passaggi</h4>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recipe.procedures)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (Model.Recipe.authorId == Model.userid) {<a asp-page="./Edit" asp-route-id="@Model.Recipe.id">Modifica</a>}
+    <a asp-page="./Index">Torna all'indice</a>
+</div>

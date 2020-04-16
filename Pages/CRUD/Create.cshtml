@@ -1,0 +1,63 @@
+﻿@page
+@model Consoli_Ricette.Pages.CRUD.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crea nuovo post</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <h4>Identificativo Autore</h4>
+                <input asp-for="Recipe.authorId" value=@Model.userid class="form-control" readonly="@(true)"/>
+                <span asp-validation-for="Recipe.authorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h4>Nome Autore</h4>
+                <input asp-for="Recipe.authorName" class="form-control" />
+                <span asp-validation-for="Recipe.authorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h4>Difficoltà</h4>
+                <input asp-for="Recipe.difficulty" class="form-control" />
+                <span asp-validation-for="Recipe.difficulty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h4>Tempo di Preparazione</h4>
+                <input asp-for="Recipe.time" class="form-control" />
+                <span asp-validation-for="Recipe.time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h4>Ingredienti</h4>
+                <input asp-for="Recipe.ingredients" class="form-control" />
+                <span asp-validation-for="Recipe.ingredients" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h4>Descrizione</h4>
+                <input asp-for="Recipe.description" class="form-control" />
+                <span asp-validation-for="Recipe.description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h4>Procedura</h4>
+                <input asp-for="Recipe.procedures" class="form-control" />
+                <span asp-validation-for="Recipe.procedures" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crea" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Torna all'indice</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
